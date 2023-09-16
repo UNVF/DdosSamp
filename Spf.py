@@ -22,4 +22,3 @@ while True:
 
     print("Paket terkirim", i)
     i = i + 1
-￼Enter
